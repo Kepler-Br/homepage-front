@@ -1,10 +1,34 @@
 import React from 'react';
+import {ApolloClient, ApolloProvider, gql, InMemoryCache, useQuery} from "@apollo/client";
+import Navbar from "./component/Navbar";
+import Spinner from "./component/Spinner";
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Link
+} from "react-router-dom";
+import ArticleList from "./page/ArticleList";
+
+const client = new ApolloClient({
+    uri: 'http://127.0.0.1:8080/graphql',
+    cache: new InMemoryCache()
+});
 
 function App() {
     return (
-        <div className="App">
-            "Hello world"
-        </div>
+        <ApolloProvider client={client}>
+            <Router>
+                <Navbar/>
+                <div className="container">
+                    <Switch>
+                        <Route path="/">
+                            <ArticleList/>
+                        </Route>
+                    </Switch>
+                </div>
+            </Router>
+        </ApolloProvider>
     );
 }
 

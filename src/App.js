@@ -9,6 +9,7 @@ import {
     Link
 } from "react-router-dom";
 import ArticleList from "./page/ArticleList";
+import NewArticle from "./page/NewArticle";
 
 const client = new ApolloClient({
     uri: 'http://127.0.0.1:8080/graphql',
@@ -22,6 +23,9 @@ function App() {
                 <Navbar/>
                 <div className="container">
                     <Switch>
+                        <Route path={"/new-article"}>
+                            <NewArticle/>
+                        </Route>
                         <Route path="/">
                             <ArticleList/>
                         </Route>

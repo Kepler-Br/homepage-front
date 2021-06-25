@@ -34,7 +34,7 @@ function ArticleList() {
             {
                 data.articlesForward.edges.map(
                     ({cursor, node}) => (
-                        <ArticlePreview title={node.title} preview={node.renderedPreview} link={node.url} createdAt={node.createdAt} key={node.url}/>
+                        <ArticlePreview title={node.title} preview={node.renderedPreview} url={node.url} createdAt={node.createdAt} key={node.url}/>
                     ))
             }
         </div>

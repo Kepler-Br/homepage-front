@@ -2,6 +2,7 @@ import React from 'react';
 import moment from "moment";
 import 'moment/locale/ru'
 import 'moment/locale/en-gb'
+import {Link} from "react-router-dom";
 
 function getDateString(timestamp) {
     const date = new Date(timestamp);
@@ -25,8 +26,10 @@ function ArticlePreview(props) {
             <div className="card">
                 <div className="card-body">
                     <h5 className="card-title">{props.title}</h5>
-                    <p className="card-text">{props.preview}</p>
-                    <a href={props.url} className="btn btn-primary">Read full →</a>
+                    <p className="card-text" dangerouslySetInnerHTML={{
+                        __html: props.preview
+                    }}/>
+                    <Link to={"/article/" + props.url} className="btn btn-outline-primary">Read full →</Link>
                 </div>
                 <div className="card-footer">
                     <small className="text-muted">{getDateString(props.createdAt)}</small>
